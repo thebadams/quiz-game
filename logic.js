@@ -64,17 +64,13 @@ function startPlaying(){
 }
 
 //function to check if a given character is in a string
-function checkCharacter(){
-    var testCharacter = "z"
-    var testString = "testCharacter"
-    if(testString.includes(testCharacter)){
-        console.log(`The Test Character "${testCharacter}" is contained in the string ${testString}`);
-    } else {
-        console.log(`The Test Character "${testCharacter}" is NOT contained in the the string "${testString}"`)
-    }
-}
+
 
 //keydown event listener
+document.addEventListener("keydown", function(event){
+    var keyPressed = event.key;
+    console.log(keyPressed);
+})
 
 // document.addEventListener("keydown", function(event) {
     
