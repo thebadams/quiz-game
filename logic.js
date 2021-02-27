@@ -31,6 +31,13 @@ function countDown() {
 
 //keydown event listener
 
+document.addEventListener("keydown", function(event) {
+    blanks.textContent = event.key;
+
+    //charcterAt(index of letter match)
+}
+    )
+
     //change the .word-blanks
     function renderBlanks() {
       // Randomly picks word from words array
@@ -46,6 +53,8 @@ function countDown() {
       wordBlank.textContent = blanksLetters.join(" ")
     }
 //score keeper
+    //win condition
+    //loss condition
     //reset score
 
 
