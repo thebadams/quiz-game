@@ -2,7 +2,7 @@
 var start = document.querySelector(".start-button");
 var blanks = document.querySelector(".word-blanks");
 var words = ["JavaScript", "Query", "Attribute", "Argument", "Window", "Document"] //array of available words
-var answer = ""; //sets answer as an empty string at the beginning
+var answer = "Query"; //sets answer as an empty string at the beginning
 
 
 // function to generate a word from the words array
@@ -63,16 +63,23 @@ function startPlaying(){
     timerInterval();
 }
 
-
+//function to check if a given character is in a string
+function checkCharacter(){
+    var testCharacter = "z"
+    var testString = "testCharacter"
+    if(testString.includes(testCharacter)){
+        console.log(`The Test Character "${testCharacter}" is contained in the string ${testString}`);
+    } else {
+        console.log(`The Test Character "${testCharacter}" is NOT contained in the the string "${testString}"`)
+    }
+}
 
 //keydown event listener
 
-document.addEventListener("keydown", function(event) {
-    blanks.textContent = event.key;
-
-    //charcterAt(index of letter match)
-}
-    )
+// document.addEventListener("keydown", function(event) {
+    
+// }
+//     )
 
 //score keeper
     //win condition
