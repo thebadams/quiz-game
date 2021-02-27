@@ -1,6 +1,34 @@
+//declare global variables
 var start = document.querySelector(".start-button");
 var blanks = document.querySelector(".word-blanks");
-var words = ["JavaScript", "Query", "Attribute", "Argument", "Window", "Document"]
+var words = ["JavaScript", "Query", "Attribute", "Argument", "Window", "Document"] //array of available words
+var answer
+
+
+// function to generate a word from the words array
+function generateIndex() { //generates a number to reference to array
+    var wordsIndex = Math.floor(Math.random()*words.length);
+    return wordsIndex;
+}
+//function to generate the answer
+function generateAnswer(){
+    wordsIndex = generateIndex();
+    answer = words[wordsIndex];
+    return answer
+}
+
+
+//change the .word-blanks
+function renderBlanks() {
+    var string = ""
+    for(var i = 0; i < answer.length; i++){
+        var blank = "_ ";
+        string = string + blank;
+        blanks.textContent = string;
+    }
+}
+
+
 //countdown timer
 
 
@@ -38,20 +66,6 @@ document.addEventListener("keydown", function(event) {
 }
     )
 
-    //change the .word-blanks
-    function renderBlanks() {
-      // Randomly picks word from words array
-      chosenWord = words[Math.floor(Math.random() * words.length)];
-      lettersInChosenWord = chosenWord.split("");
-      numBlanks = lettersInChosenWord.length;
-      blanksLetters = []
-      // Uses loop to push blanks to blankLetters array
-      for (var i = 0; i < numBlanks; i++) {
-        blanksLetters.push("_");
-      }
-      // Changes blankLetters array into a string and renders it on the screen
-      wordBlank.textContent = blanksLetters.join(" ")
-    }
 //score keeper
     //win condition
     //loss condition
@@ -69,8 +83,4 @@ document.addEventListener("keydown", function(event) {
 //array of words to choose from
 // start.addEventListener("click", wordChoice(){
 // })
-function wordChoice(){
-    var item = words[Math.floor(Math.random() * words.length)];
-        blanks.textContent = item;
-};
 
