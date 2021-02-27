@@ -2,7 +2,7 @@
 var start = document.querySelector(".start-button");
 var blanks = document.querySelector(".word-blanks");
 var words = ["JavaScript", "Query", "Attribute", "Argument", "Window", "Document"] //array of available words
-var answer
+var answer = ""; //sets answer as an empty string at the beginning
 
 
 // function to generate a word from the words array
@@ -36,7 +36,7 @@ function renderBlanks() {
 var timer = document.querySelector(".timer-count"); //declare variable timer that is the countdown
 //defines the interval, and what function is called
 var countDownInterval 
-function interval() {
+function timerInterval() {
     countDownInterval = setInterval(countDown, 1000)
 }
 
@@ -53,6 +53,14 @@ function countDown() {
         
     }
     
+}
+
+//write a function to occur when the start button is clicked
+
+function startPlaying(){
+    generateAnswer();
+    renderBlanks();
+    timerInterval();
 }
 
 
