@@ -1,6 +1,6 @@
 var start = document.querySelector(".start-button");
 var blanks = document.querySelector(".word-blanks");
-var words = ["J _ v _ S c r _ _t", "Q _ _ r _", "_ t t r _ b _ t _", "_ r g _ m _ n _", "W _ _ d _ w", "_ o c _ m _ _ t" ]
+var words = ["JavaScript", "Query", "Attribute", "Argument", "Window", "Document"]
 //countdown timer
     //game over prompt
 
