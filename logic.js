@@ -1,9 +1,12 @@
 //countdown timer
 var timer = document.querySelector(".timer-count"); //declare variable timer that is the countdown
+//defines the interval, and what function is called
 var countDownInterval 
 function interval() {
     countDownInterval = setInterval(countDown, 1000)
 }
+
+//defines countDown Function
 function countDown() {
     
     var timeLeft = timer.textContent;
@@ -11,7 +14,7 @@ function countDown() {
     timeLeft--
     timer.textContent = timeLeft
     } else {
-        clearInterval(countDownInterval);
+        clearInterval(countDownInterval); //clears the interval and stops the timer
         alert("Game Over");
         
     }
