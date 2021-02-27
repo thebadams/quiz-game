@@ -2,6 +2,9 @@ var start = document.querySelector(".start-button");
 var blanks = document.querySelector(".word-blanks");
 var words = ["JavaScript", "Query", "Attribute", "Argument", "Window", "Document"]
 //countdown timer
+
+
+    //game over prompt
 var timer = document.querySelector(".timer-count"); //declare variable timer that is the countdown
 //defines the interval, and what function is called
 var countDownInterval 
@@ -27,10 +30,29 @@ function countDown() {
 
 
 //keydown event listener
-    //change the .word-blanks
 
+    //change the .word-blanks
+    function renderBlanks() {
+      // Randomly picks word from words array
+      chosenWord = words[Math.floor(Math.random() * words.length)];
+      lettersInChosenWord = chosenWord.split("");
+      numBlanks = lettersInChosenWord.length;
+      blanksLetters = []
+      // Uses loop to push blanks to blankLetters array
+      for (var i = 0; i < numBlanks; i++) {
+        blanksLetters.push("_");
+      }
+      // Changes blankLetters array into a string and renders it on the screen
+      wordBlank.textContent = blanksLetters.join(" ")
+    }
 //score keeper
     //reset score
+
+
+
+
+
+
 
 
 
@@ -42,3 +64,4 @@ function wordChoice(){
     var item = words[Math.floor(Math.random() * words.length)];
         blanks.textContent = item;
 };
+
