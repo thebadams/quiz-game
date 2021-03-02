@@ -61,7 +61,9 @@ function startPlaying(){
     generateAnswer();
     renderBlanks();
     timerInterval();
-}
+};
+
+start.addEventListener("click", startPlaying);
 
 //function to check if a given character is in a string
 
