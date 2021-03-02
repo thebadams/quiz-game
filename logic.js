@@ -1,14 +1,14 @@
 //declare global variables
-var start = document.querySelector(".start-button");
-var blanks = document.querySelector(".word-blanks");
+var start = document.querySelector(".start-button");//grabs start button
+var blanks = document.querySelector(".word-blanks"); //grabs word content
 var words = ["JavaScript", "Query", "Attribute", "Argument", "Window", "Document"] //array of available words
 var answer = "Query"; //sets answer as an empty string at the beginning
-var win = document.querySelector(".win");
-var lose = document.querySelector(".lose");
-var losses = 0;
-var wins = 0;
-var timeLeft = 10;
-var reset = document.querySelector(".reset-button")
+var win = document.querySelector(".win"); //grabs win counter
+var lose = document.querySelector(".lose"); //grabs loss counter
+var losses = 0; // sets losses to 0
+var wins = 0; // sets wins to 0
+var timeLeft = 10; //sets timeLeft to 10s
+var reset = document.querySelector(".reset-button")//grabs reset button
 
 // function to generate a word from the words array
 function generateIndex() { //generates a number to reference to array
@@ -55,9 +55,9 @@ function countDown() {
     timer.textContent = timeLeft
     } else {
         clearInterval(countDownInterval); //clears the interval and stops the timer
-        removeEventListener("keydown", checkKey)
-        losses++
-        lose.textContent = losses;
+        removeEventListener("keydown", checkKey)//removes event listener
+        losses++//adds 1 to losses
+        lose.textContent = losses; //updates display
 
         
     }
@@ -70,56 +70,45 @@ function startPlaying(){
     generateAnswer();
     renderBlanks();
     timerInterval();
-    document.addEventListener("keydown", checkKey)
+    document.addEventListener("keydown", checkKey)//generates the event listener
 
     
 };
 
 
-start.addEventListener("click", startPlaying);
+start.addEventListener("click", startPlaying); //adds an event listener to the start button
 
 //function to check if a given character is in a string
 
-//keydown event listener
+//keydown event listener function
 function checkKey(event) {
-        var keyPressed = event.key;
-        var contentArray = blanks.textContent.split("");
-        var index = answer.indexOf(keyPressed);
-        if (index !== -1) {
-            contentArray[index] = answer.charAt(index);
-            blanks.textContent = contentArray.join("");
-            while (index !== -1) {
+        var keyPressed = event.key; //grabs keyPressed value
+        var contentArray = blanks.textContent.split(""); // defines an array of current characters in blanks
+        var index = answer.indexOf(keyPressed); //gets index of keyPressed (tells us where in the word the letter occurs)
+        if (index !== -1) { //if the letter appears in the word
+            contentArray[index] = answer.charAt(index); // replace array element[index] with character at index
+            blanks.textContent = contentArray.join(""); // make the array a string and place it on the page
+            while (index !== -1) { // when a letter appears more than once, keep running the code until indexOf returns -1
                 index = answer.indexOf(keyPressed, index + 1)
                 contentArray[index] = answer.charAt(index);
                 blanks.textContent = contentArray.join("");
             }
         }
-        if (answer === blanks.textContent) {
-            clearInterval(countDownInterval);
-            document.removeEventListener("keydown", checkKey);
-            wins++;
-            win.textContent = wins;
+        if (answer === blanks.textContent) {// check win condition
+            clearInterval(countDownInterval); //clear countDown interval
+            document.removeEventListener("keydown", checkKey); // remove the event listener
+            wins++; // add 1 to wins
+            win.textContent = wins; //update win display
         };
 
     }
 
-// document.addEventListener("keydown", function(event) {
-    
-// }
-//     )
-
-//score keeper
-    //win condition
-    //loss condition
-    //reset score
-
-
+//add an event listener to the reset button
 reset.addEventListener("click", function(){
     wins = 0;
     losses = 0;
     win.textContent = wins;
     lose.textContent = losses;
-    console.log(`${wins} & ${losses}`);
     });
 
 
