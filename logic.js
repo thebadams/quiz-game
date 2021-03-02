@@ -8,6 +8,7 @@ var lose = document.querySelector(".lose");
 var losses = 0;
 var wins = 0;
 var timeLeft = 10;
+var reset = document.querySelector(".reset-button")
 
 // function to generate a word from the words array
 function generateIndex() { //generates a number to reference to array
@@ -41,7 +42,7 @@ var timer = document.querySelector(".timer-count"); //declare variable timer tha
 //defines the interval, and what function is called
 var countDownInterval 
 function timerInterval() {
-    timeLeft = 10
+    timeLeft = 10;
     countDownInterval = setInterval(countDown, 1000)
 }
 
@@ -54,6 +55,7 @@ function countDown() {
     timer.textContent = timeLeft
     } else {
         clearInterval(countDownInterval); //clears the interval and stops the timer
+        removeEventListener("keydown", checkKey)
         losses++
         lose.textContent = losses;
 
@@ -68,7 +70,18 @@ function startPlaying(){
     generateAnswer();
     renderBlanks();
     timerInterval();
-    document.addEventListener("keydown", function (event) {
+    document.addEventListener("keydown", checkKey)
+
+    
+};
+
+
+start.addEventListener("click", startPlaying);
+
+//function to check if a given character is in a string
+
+//keydown event listener
+function checkKey(event) {
         var keyPressed = event.key;
         var contentArray = blanks.textContent.split("");
         var index = answer.indexOf(keyPressed);
@@ -81,15 +94,14 @@ function startPlaying(){
                 blanks.textContent = contentArray.join("");
             }
         }
-    })
-};
+        if (answer === blanks.textContent) {
+            clearInterval(countDownInterval);
+            document.removeEventListener("keydown", checkKey);
+            wins++;
+            win.textContent = wins;
+        };
 
-start.addEventListener("click", startPlaying);
-
-//function to check if a given character is in a string
-
-//keydown event listener
-
+    }
 
 // document.addEventListener("keydown", function(event) {
     
@@ -100,6 +112,15 @@ start.addEventListener("click", startPlaying);
     //win condition
     //loss condition
     //reset score
+
+
+reset.addEventListener("click", function(){
+    wins = 0;
+    losses = 0;
+    win.textContent = wins;
+    lose.textContent = losses;
+    console.log(`${wins} & ${losses}`);
+    });
 
 
 
