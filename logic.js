@@ -22,7 +22,7 @@ function generateAnswer(){
 function renderBlanks() {
     var string = ""
     for(var i = 0; i < answer.length; i++){
-        var blank = "_ ";
+        var blank = "_";
         string = string + blank;
         blanks.textContent = string;
     }
@@ -65,11 +65,20 @@ function startPlaying(){
 
 //function to check if a given character is in a string
 
-
 //keydown event listener
 document.addEventListener("keydown", function(event){
     var keyPressed = event.key;
-    console.log(keyPressed);
+    var contentArray = blanks.textContent.split("");
+    var index = answer.indexOf(keyPressed);
+    if(index !== -1) {
+        contentArray[index]= answer.charAt(index);
+        blanks.textContent = contentArray.join("");
+        while(index !== -1){
+           index = answer.indexOf(keyPressed, index+1)
+           contentArray[index] = answer.charAt(index);
+           blanks.textContent = contentArray.join("");
+        }
+    }
 })
 
 // document.addEventListener("keydown", function(event) {
